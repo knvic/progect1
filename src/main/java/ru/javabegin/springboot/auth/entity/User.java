@@ -14,7 +14,7 @@ import java.util.Collection;
 @Table(name = "user_data", schema = "tasklist", catalog = "postgres")
 @Getter
 @Setter
-public class UserData {
+public class User {
 
     @Id
     @Column(name = "id", nullable = false)
@@ -48,6 +48,6 @@ public class UserData {
     @OneToMany(mappedBy = "userDataByUserId")
     private Collection<Task> tasksById;
 
-    @OneToOne(mappedBy = "userDataByUserId")
-    private UserRole userRoleById;
+    //@OneToOne(mappedBy = "userDataByUserId")
+    //private UserRole userRoleById;
 }

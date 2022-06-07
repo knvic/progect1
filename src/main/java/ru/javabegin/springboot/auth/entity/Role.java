@@ -10,7 +10,7 @@ import java.util.Collection;
 @Table(name = "role_data", schema = "tasklist", catalog = "postgres")
 @Getter
 @Setter
-public class RoleData {
+public class Role {
 
 
 

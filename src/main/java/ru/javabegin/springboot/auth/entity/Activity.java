@@ -30,5 +30,5 @@ public class Activity {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private UserData userDataByUserId;
+    private User userDataByUserId;
 }

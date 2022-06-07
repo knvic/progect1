@@ -1,54 +1,47 @@
 package ru.javabegin.springboot.business.entity;
 
-import ru.javabegin.springboot.auth.entity.UserData;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import ru.javabegin.springboot.auth.entity.User;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 @Entity
-
+@EqualsAndHashCode
+@NoArgsConstructor
+@Getter
+@Setter
 public class Task {
 
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
+    @Column
     private Long id;
 
-    @Basic
-    @Column(name = "title", nullable = false, length = -1)
+    @Column
     private String title;
 
-    @Basic
-    @Column(name = "completed", nullable = true)
-    private Short completed;
+    @Column
+    private Integer completed;
 
-    @Basic
-    @Column(name = "task_date", nullable = true)
-    private Timestamp taskDate;
 
-    @Basic
-    @Column(name = "priority_id", nullable = true)
-    private Long priorityId;
-
-    @Basic
-    @Column(name = "category_id", nullable = true)
-    private Long categoryId;
-
-    @Basic
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @Column(name = "task_date")
+    private Date taskDate;
 
 
 
     @ManyToOne
     @JoinColumn(name = "priority_id", referencedColumnName = "id")
-    private Priority priorityByPriorityId;
+    private Priority priority;
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category categoryByCategoryId;
+    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private UserData userDataByUserId;
+    private User user;
 }

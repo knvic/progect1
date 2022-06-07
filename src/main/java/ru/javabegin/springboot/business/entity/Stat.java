@@ -1,35 +1,32 @@
 package ru.javabegin.springboot.business.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.javabegin.springboot.auth.entity.UserData;
+import ru.javabegin.springboot.auth.entity.User;
 
 import javax.persistence.*;
 
 @Entity
+@EqualsAndHashCode
+@NoArgsConstructor
 @Getter
 @Setter
 public class Stat {
 
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
+    @Column
     private Long id;
-    @Basic
-    @Column(name = "completed_total", nullable = false)
+
+    @Column(name = "completed_total", updatable = false)
     private Long completedTotal;
 
-    @Basic
-    @Column(name = "uncompleted_total", nullable = false)
+    @Column(name = "uncompleted_total", updatable = false)
     private Long uncompletedTotal;
 
-    @Basic
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
-
-
-
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private UserData userDataByUserId;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }
