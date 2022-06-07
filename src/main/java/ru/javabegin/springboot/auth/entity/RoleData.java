@@ -1,4 +1,4 @@
-package ru.javabegin.springboot.business.entity;
+package ru.javabegin.springboot.auth.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -2,6 +2,7 @@ package ru.javabegin.springboot.business.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import ru.javabegin.springboot.auth.entity.UserData;
 
 import javax.persistence.*;
 

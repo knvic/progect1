@@ -1,7 +1,11 @@
-package ru.javabegin.springboot.business.entity;
+package ru.javabegin.springboot.auth.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import ru.javabegin.springboot.business.entity.Category;
+import ru.javabegin.springboot.business.entity.Priority;
+import ru.javabegin.springboot.business.entity.Stat;
+import ru.javabegin.springboot.business.entity.Task;
 
 import javax.persistence.*;
 import java.util.Collection;

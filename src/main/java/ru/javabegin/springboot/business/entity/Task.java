@@ -1,5 +1,7 @@
 package ru.javabegin.springboot.business.entity;
 
+import ru.javabegin.springboot.auth.entity.UserData;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
