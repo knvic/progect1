@@ -1,34 +1,38 @@
 package ru.javabegin.springboot.auth.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-@Entity
 @Getter
 @Setter
+@DynamicUpdate
+@Entity
 public class Activity {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Basic
-    @Column(name = "activated", nullable = false)
-    private Short activated;
+    @Type(type="org.hibernate.type.NumericBooleanType")
+    @Column
+    private boolean activated;
 
-    @Basic
-    @Column(name = "uuid", nullable = false, length = -1)
+    @NotBlank
+    @Column(updatable = false)
     private String uuid;
 
-    @Basic
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User userDataByUserId;
+
 }
