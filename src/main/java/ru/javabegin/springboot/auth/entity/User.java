@@ -23,7 +23,6 @@ public class User {
     private String username;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-    @Column
     public Activity activity;
 
     @Email
